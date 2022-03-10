@@ -1,6 +1,27 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+// Generates password from user input criteria
+function generatePassword(pwLength, hasLower, hasUpper, hasSpecial, hasNums) {
+  let lower = 'abcdefghijklmnopqrstuvwxyz';
+  let upper = lower.toUpperCase();
+  let symbols = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+  let numbers = "1234567890";
+  let criteria = ""
+  if (hasLower) {
+    criteria.concat("l");
+  } else if (hasUpper) {
+    criteria.concat("u");
+  } else if (hasSpecial) {
+    criteria.concat("s");
+  } else if (hasNums) {
+    criteria.concat("n");
+  }
+
+  for (i = 0; i < pwLength; i++) {
+    let type = criteria[length%criteria.length]
+  }
+}
 
 // Write password to the #password input
 function writePassword() {
