@@ -1,6 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+// Shuffle function used to randomize password order
 String.prototype.shuffle = function () {
   var a = this.split(""),
       n = a.length;
@@ -31,9 +32,9 @@ function generatePassword(pwLength, hasLower, hasUpper, hasSpecial, hasNums) {
   } if (hasNums) {
     criteria = criteria.concat('n');
   }
-  console.log("generating password with",pwLength,hasLower,hasUpper,hasSpecial,hasNums);
-  console.log(criteria);
-
+  
+  // Loop the desired length of pwd
+  // Distributes character types as evenly as possible
   for (i = 0; i < pwLength; i++) {
     var type = criteria[i%criteria.length];
     var char = '';
@@ -59,6 +60,8 @@ function generatePassword(pwLength, hasLower, hasUpper, hasSpecial, hasNums) {
     password = password.concat(char);
     
   }
+  // Loop has given password a pattern based on character type,
+  // so randomize order to make it more secure
   return password.shuffle();
 }
 
@@ -69,6 +72,8 @@ function writePassword() {
   var lengthVerify = false;
   passwordLength = parseInt(passwordLength);
 
+  // Make sure user input is valid
+  // Get length
   while (!lengthVerify) {
     if (8 <= passwordLength && passwordLength <= 128) {
       lengthVerify = true;
@@ -78,6 +83,8 @@ function writePassword() {
   }
   var criteriaVerify = false;
 
+  // Make sure user input is valid
+  // Get pwd criteria
   var includeLower = confirm("Include lowercase?");
   while (!criteriaVerify) {
     var includeUpper = confirm("Include uppercase?");
@@ -93,6 +100,7 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
   console.log(password);
 
+  // Set html passwordText to the generated pwd
   passwordText.value = password;
 
 }
